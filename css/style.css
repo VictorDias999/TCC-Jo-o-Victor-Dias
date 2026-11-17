@@ -1,4 +1,5 @@
 :root {
+  /* Cores do tema escuro, usado inicialmente pelo site. */
   --bg: #070b1a;
   --bg2: #0c1330;
   --card: #101a3b;
@@ -10,6 +11,7 @@
   --c: #22d3ee;
 }
 
+/* Substitui as cores quando o tema claro está ativo. */
 [data-theme="light"] {
   --bg: #f4f6ff;
   --bg2: #e7ebfa;
@@ -22,20 +24,25 @@
   --c: #0b7285;
 }
 
-/* Configurações gerais */
+/* CONFIGURAÇÕES GERAIS */
+
+/* Inclui bordas e espaçamentos internos no cálculo do tamanho dos elementos. */
 * {
   box-sizing: border-box;
 }
 
+/* Oculta elementos marcados como hidden pelo HTML ou JavaScript. */
 [hidden] {
   display: none !important;
 }
 
+/* Suaviza a rolagem e reserva espaço para o cabeçalho fixo. */
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 70px;
 }
 
+/* Define a fonte, o fundo e a cor padrão da página. */
 body {
   margin: 0;
   background: var(--bg);
@@ -43,6 +50,7 @@ body {
   font: 16px/1.65 system-ui, "Segoe UI", sans-serif;
 }
 
+/* Mantém fonte e espaçamento consistentes nos títulos. */
 h1,
 h2,
 h3 {
@@ -51,6 +59,7 @@ h3 {
   line-height: 1.2;
 }
 
+/* Ajusta os tamanhos dos títulos; clamp adapta o tamanho à tela. */
 h1 {
   font-size: clamp(2rem, 5vw, 3.4rem);
 }
@@ -63,25 +72,30 @@ h3 {
   font-size: 1.15rem;
 }
 
+/* Usa a cor de destaque nos links. */
 a {
   color: var(--c);
 }
 
+/* Controla a distância dos parágrafos e limita o comprimento das linhas. */
 p {
   max-width: 70ch;
   margin: 0 0 1em;
 }
 
+/* Mostra um contorno ao redor do elemento selecionado pelo teclado. */
 :focus-visible {
   outline: 3px solid var(--c);
   outline-offset: 2px;
 }
 
+/* Esconde o link de pular conteúdo até que ele receba foco. */
 .skip {
   position: absolute;
   left: -999px;
 }
 
+/* Exibe o link de acessibilidade quando selecionado pelo teclado. */
 .skip:focus {
   top: 8px;
   left: 8px;
@@ -91,7 +105,9 @@ p {
   color: #fff;
 }
 
-/* Cabeçalho e navegação */
+/* CABEÇALHO E NAVEGAÇÃO */
+
+/* Mantém o cabeçalho no topo e organiza seu conteúdo em linha. */
 .hd {
   position: sticky;
   top: 0;
@@ -105,6 +121,7 @@ p {
   backdrop-filter: blur(10px);
 }
 
+/* Estiliza o logotipo e usa a margem automática para afastá-lo dos botões. */
 .logo {
   margin-right: auto;
   color: var(--tx);
@@ -112,25 +129,30 @@ p {
   text-decoration: none;
 }
 
+/* Realça a parte final do logotipo. */
 .logo span {
   color: var(--c);
 }
 
+/* Organiza os links de navegação horizontalmente. */
 nav {
   display: flex;
   gap: 12px;
   font-size: 0.85rem;
 }
 
+/* Define a aparência padrão dos links do menu. */
 nav a {
   color: var(--mut);
   text-decoration: none;
 }
 
+/* Muda a cor do link quando o ponteiro passa sobre ele. */
 nav a:hover {
   color: var(--c);
 }
 
+/* Estiliza os botões do cabeçalho. */
 .ib {
   padding: 6px 10px;
   border: 1px solid var(--bd);
@@ -141,10 +163,12 @@ nav a:hover {
   font-size: 1rem;
 }
 
+/* O botão de menu móvel começa escondido em telas grandes. */
 #mb {
   display: none;
 }
 
+/* Em telas menores, mostra o botão e transforma o menu em lista vertical. */
 @media (max-width: 1000px) {
   #mb {
     display: block;
@@ -161,12 +185,15 @@ nav a:hover {
     background: var(--bg2);
   }
 
+  /* A classe open, controlada pelo JavaScript, exibe o menu móvel. */
   nav.open {
     display: flex;
   }
 }
 
-/* Largura e seções da página */
+/* CONTEÚDO E SEÇÕES */
+
+/* Centraliza o conteúdo e limita sua largura em telas grandes. */
 .w {
   max-width: 1080px;
   margin: auto;
@@ -174,12 +201,14 @@ nav a:hover {
   padding-left: 5%;
 }
 
+/* Adiciona espaço e uma linha de separação em cada seção. */
 .sec {
   padding-top: 72px;
   padding-bottom: 72px;
   border-top: 1px solid var(--bd);
 }
 
+/* Organiza a abertura em duas colunas e adiciona o brilho decorativo. */
 .hero {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
@@ -190,18 +219,21 @@ nav a:hover {
   background: radial-gradient(600px 300px at 80% 20%, rgba(139, 92, 246, 0.18), transparent);
 }
 
+/* Em telas menores, coloca o texto e a ilustração um abaixo do outro. */
 @media (max-width: 800px) {
   .hero {
     grid-template-columns: 1fr;
   }
 }
 
+/* Ajusta a largura da ilustração e a centraliza na coluna. */
 #nn {
   justify-self: center;
   width: 100%;
   max-width: 380px;
 }
 
+/* Aparência compartilhada por links e botões principais. */
 .btn {
   display: inline-block;
   padding: 12px 22px;
@@ -215,7 +247,9 @@ nav a:hover {
   text-decoration: none;
 }
 
-/* Cards, listas, abas e painéis */
+/* CARDS, LISTAS, ABAS E PAINÉIS */
+
+/* Cria uma grade que ajusta o número de colunas ao espaço disponível. */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -225,6 +259,7 @@ nav a:hover {
   list-style: none;
 }
 
+/* Compartilha estilo de cartão entre itens de lista, cards e painéis. */
 .grid > li,
 .card,
 .pn {
@@ -234,12 +269,14 @@ nav a:hover {
   background: var(--card);
 }
 
+/* Coloca os títulos e destaques dos itens da lista em linha própria. */
 .grid > li b,
 .grid > li h3 {
   display: block;
   margin-bottom: 6px;
 }
 
+/* Organiza botões de abas e filtros, permitindo que quebrem de linha. */
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -247,6 +284,7 @@ nav a:hover {
   margin: 16px 0;
 }
 
+/* Estilo comum dos botões de abas, linha do tempo e filtros. */
 .tab,
 .tlb,
 .cf {
@@ -259,13 +297,16 @@ nav a:hover {
   font-size: 0.95rem;
 }
 
+/* Destaca a aba ou opção selecionada por seu atributo de acessibilidade. */
 [aria-selected="true"] {
   border-color: var(--a);
   background: var(--a);
   color: #fff;
 }
 
-/* Perguntas e campo de pesquisa */
+/* PERGUNTAS EXPANSÍVEIS E PESQUISA */
+
+/* Cria a aparência de cartão para perguntas frequentes e riscos. */
 details {
   margin: 8px 0;
   padding: 12px 16px;
@@ -274,15 +315,18 @@ details {
   background: var(--card);
 }
 
+/* Indica que o título da pergunta pode ser clicado. */
 summary {
   cursor: pointer;
   font-weight: 600;
 }
 
+/* Espaça a resposta em relação ao título da pergunta. */
 details p {
   margin: 8px 0 0;
 }
 
+/* Estiliza o campo de pesquisa do glossário. */
 input {
   width: 100%;
   max-width: 420px;
@@ -294,7 +338,9 @@ input {
   font-size: 1rem;
 }
 
-/* Alternativas do quiz e resultado */
+/* QUIZ E CARDS DE FERRAMENTAS */
+
+/* Faz cada resposta do quiz ocupar a largura do painel. */
 .op {
   display: block;
   width: 100%;
@@ -309,6 +355,7 @@ input {
   text-align: left;
 }
 
+/* Aplica cores para indicar resposta correta ou incorreta. */
 .op.ok {
   border-color: #22c55e;
   background: rgba(34, 197, 94, 0.2);
@@ -319,6 +366,7 @@ input {
   background: rgba(239, 68, 68, 0.2);
 }
 
+/* Estiliza a bolha com a inicial do nome da ferramenta. */
 .lg {
   display: grid;
   place-items: center;
@@ -331,19 +379,23 @@ input {
   font-weight: 700;
 }
 
+/* Divide o conteúdo em duas colunas. */
 .two {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
 
+/* Em celular, organiza as duas colunas uma abaixo da outra. */
 @media (max-width: 700px) {
   .two {
     grid-template-columns: 1fr;
   }
 }
 
-/* Rodapé e botão de voltar ao topo */
+/* RODAPÉ E BOTÃO DE VOLTAR AO TOPO */
+
+/* Fixa o botão no canto inferior direito e o esconde inicialmente. */
 #top {
   position: fixed;
   right: 18px;
@@ -352,10 +404,12 @@ input {
   display: none;
 }
 
+/* O JavaScript adiciona show para exibir o botão após a rolagem. */
 #top.show {
   display: block;
 }
 
+/* Define espaçamento, borda e cor do rodapé. */
 footer {
   padding: 32px 0;
   border-top: 1px solid var(--bd);
@@ -363,36 +417,44 @@ footer {
   font-size: 0.9rem;
 }
 
-/* Animações */
+/* ANIMAÇÕES */
+
+/* As seções começam transparentes quando o JavaScript está ativo. */
 .js .rv {
   opacity: 0;
   transition: opacity 0.7s;
 }
 
+/* A classe in, adicionada pelo JavaScript, revela a seção. */
 .js .rv.in {
   opacity: 1;
 }
 
+/* Faz os círculos da rede neural pulsarem. */
 .pulse {
   animation: p 3s ease-in-out infinite;
 }
 
+/* Define o ponto intermediário da animação de pulsação. */
 @keyframes p {
   50% {
     opacity: 0.35;
   }
 }
 
+/* Respeita a preferência do visitante por menos movimento. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
+  /* Mantém as seções visíveis e remove sua transição. */
   .js .rv {
     opacity: 1;
     transition: none;
   }
 
+  /* Desativa o efeito pulsante da ilustração. */
   .pulse {
     animation: none;
   }
